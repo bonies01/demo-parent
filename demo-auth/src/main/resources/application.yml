@@ -1,0 +1,27 @@
+
+spring:
+  application:
+    # 指定application name
+    name: auth
+  cloud:
+    gateway:
+      routes:
+        # 路由id
+        - id: web1
+          # 路由到的地址
+          uri: http://127.0.0.1:8090
+          # 设置谓词，路径匹配的进行路由
+          predicates:
+            - Path=/query1
+        # 路由id
+        - id: web2
+          # 路由到的地址
+          uri: http://127.0.0.1:8091
+          # 设置谓词，路径匹配的进行路由
+          predicates:
+            - Path=/query2
+nacos:
+  discovery:
+    server-addr: 127.0.0.1:8848
+server:
+  port: 8060
